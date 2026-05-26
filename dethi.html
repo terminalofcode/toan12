@@ -902,7 +902,7 @@ function renderExam() {
   const actions = document.createElement("div");
   actions.className = "exam-actions";
   actions.innerHTML = `<button class="btn-submit" onclick="submitExam()">Nộp bài & Xem đáp án</button>
-                       <button class="btn-reset" onclick="resetExam()">Làm lại từ đầu</button>`;
+                     <button class="btn-reset" onclick="goHome()">← Chọn đề khác</button>`;
   area.appendChild(actions);
   const resultDiv = document.createElement("div"); resultDiv.className = "result-banner"; resultDiv.id = "resultBanner";
   area.appendChild(resultDiv);
