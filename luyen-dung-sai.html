@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luyện Đúng/Sai — Toán THPT 2026</title>
@@ -367,15 +368,34 @@ header{
   .check-row{padding:0 16px 14px}
   .item-btns{flex-direction:column;gap:4px}
 }
+.btn-back {
+  display: inline-block;
+  margin: 10px 0 0 20px;
+  padding: 10px 18px;
+  background-color: #e2e8f0;
+  color: #334155;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+.btn-back:hover {
+  background-color: #cbd5e1;
+  color: #1e40af;
+}
 </style>
 </head>
 <body>
-
 <header>
+  <button onclick="window.location.href='index.html'" class="btn-back">⬅ Quay lại trang chủ</button>
   <div class="header-inner">
     <a class="logo" href="https://terminalofcode.github.io/toan12/index.html">TOÁN<span>THPT</span></a>
     <div class="header-right">
       <div class="stat-pill" id="live-stat">0 / 0 điểm</div>
+      <a class="home-link" href="https://terminalofcode.github.io/toan12/index.html">🏠 Trang chủ</a>
       <a class="home-link" href="https://terminalofcode.github.io/toan12/dethi.html">← Đề thi</a>
     </div>
   </div>

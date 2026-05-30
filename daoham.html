@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+<title>Ôn tập: Đạo hàm | Bảng công thức đầy đủ</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  line-height: 1.5;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* header mềm mại hơn */
+header {
+  background: linear-gradient(130deg, #0b2b44 0%, #1a4a7a 100%);
+  color: white;
+  padding: 2rem 2rem 1.8rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.85;
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+/* thanh tab mềm, gọn */
+.nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0 1.5rem;
+  justify-content: center;
+  gap: 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 1rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  border-radius: 0;
+  letter-spacing: -0.2px;
+}
+
+.tab-btn:hover {
+  color: #0f3b5c;
+  background: #f8fafc;
+}
+
+.tab-btn.active {
+  color: #1e4a76;
+  border-bottom-color: #1e4a76;
+  background: #f0f7ff;
+  font-weight: 700;
+}
+
+.tab-content {
+  display: none;
+  padding: 2rem 2rem 2rem 2rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* headings thanh lịch */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0c4a6e;
+  margin-bottom: 1.2rem;
+  border-left: 5px solid #2c7da0;
+  padding-left: 1.2rem;
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 2rem 0 1rem 0;
+  display: inline-block;
+  border-bottom: 2px solid #b9d8f0;
+  padding-bottom: 4px;
+}
+
+h4 {
+  font-weight: 600;
+  margin: 1.2rem 0 0.6rem;
+  color: #1e3a5f;
+  font-size: 1.1rem;
+}
+
+/* card tinh gọn, tinh tế */
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.4rem 1.6rem;
+  margin: 1.2rem 0;
+  border: 1px solid #e9edf2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 1px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.08);
+}
+
+/* công thức dễ đọc hơn */
+.formula-box {
+  background: #f8fafd;
+  border-left: 4px solid #2c7da0;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 2px #00000008, 0 1px 2px #fff;
+}
+
+.example {
+  background: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  margin: 1.2rem 0;
+  color: #2c3e2f;
+}
+
+.example strong {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.note {
+  background: #fef2f2;
+  border-left: 4px solid #ef4444;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  margin: 1rem 0;
+}
+
+.note strong {
+  color: #b91c1c;
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin: 0.8rem 0;
+}
+
+li {
+  margin: 0.4rem 0;
+}
+
+/* bảng biểu mềm mại, hiện đại */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+th {
+  background: #eef2ff;
+  color: #0c4a6e;
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #dce3ec;
+}
+
+td, th {
+  border: 1px solid #e4e9f0;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+tr:nth-child(even) td {
+  background-color: #fafcff;
+}
+
+tr:hover td {
+  background-color: #f1f6fe;
+  transition: 0.1s;
+}
+
+.formula-section-title {
+  background: #f1f5f9;
+  font-weight: 700;
+  padding: 0.7rem 1.2rem;
+  border-radius: 40px;
+  margin: 1.6rem 0 1rem 0;
+  color: #155e75;
+  font-size: 1.1rem;
+  letter-spacing: -0.2px;
+  display: inline-block;
+}
+
+/* grid responsive */
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* bài tập và nút xem lời giải */
+.exercise {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 1.25rem 1.6rem;
+  margin: 1.4rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s;
+}
+
+.exercise:hover {
+  border-color: #cbd5e1;
+  background: #fefefe;
+}
+
+.toggle-solution {
+  background: #1e4a76;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.toggle-solution:hover {
+  background: #0f3a5c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.solution {
+  display: none;
+  margin-top: 1rem;
+  background: #f1f8fe;
+  border-left: 4px solid #2c7da0;
+  padding: 1rem 1.4rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+
+/* nút quay lại trang trước */
+.btn-back {
+  display: inline-block;
+  margin: 1.2rem 1.8rem 0.8rem 1.8rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #eef2ff;
+  color: #1e4a76;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.btn-back:hover {
+  background-color: #e0e7ff;
+  color: #0f3b5c;
+  transform: translateX(-2px);
+}
+
+.badge {
+  display: inline-block;
+  background: #2c7da0;
+  color: white;
+  border-radius: 30px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-left: 0.6rem;
+  vertical-align: middle;
+}
+
+.badge.orange {
+  background: #e67e22;
+}
+
+.badge.red {
+  background: #e74c3c;
+}
+
+/* responsive */
+@media (max-width: 720px) {
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 0.8rem;
+    gap: 0.2rem;
+  }
+  .tab-btn {
+    padding: 0.9rem 1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .tab-content {
+    padding: 1.5rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  header h1 {
+    font-size: 1.7rem;
+  }
+  .container {
+    border-radius: 28px;
+  }
+  .formula-box, .example, .note {
+    padding: 0.8rem 1rem;
+  }
+  table, .formula-box {
+    font-size: 0.85rem;
+  }
+  td, th {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px;
+  }
+  .tab-content {
+    padding: 1.2rem;
+  }
+}
+
+/* làm đẹp thêm cho công thức MathJax */
+mjx-container {
+  font-size: 1.05rem;
+  padding: 0.1rem 0;
+}
+
+.formula-box mjx-container {
+  font-size: 1.05rem;
+}
+
+/* scroll nhẹ cho bảng */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <button onclick="history.back()" class="btn-back">← Quay lại trang trước</button>
+  <header>
+    <h1>📐 Đạo hàm</h1>
+    <p>Định nghĩa · Bảng công thức đầy đủ · Quy tắc · Ứng dụng thực tế</p>
+  </header>
+
+  <div class="nav-tabs" id="navTabs">
+    <button class="tab-btn active" data-tab="bangDaoHam">📘 Bảng đạo hàm</button>
+    <button class="tab-btn" data-tab="quyTac">⚙️ Quy tắc tính</button>
+    <button class="tab-btn" data-tab="dacBiet">✨ Trường hợp đặc biệt</button>
+    <button class="tab-btn" data-tab="ungDung">🎯 Ứng dụng</button>
+  </div>
+
+  <!-- TAB 1: BẢNG ĐẠO HÀM -->
+  <div class="tab-content active" id="bangDaoHam">
+    <h2>Bảng đạo hàm – Đầy đủ các trường hợp</h2>
+
+    <div class="card">
+      <h3>📌 Định nghĩa đạo hàm</h3>
+      <div class="formula-box">
+        $$f'(x_0) = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}$$
+      </div>
+      <p>Nếu giới hạn tồn tại hữu hạn, ta nói <strong>f có đạo hàm tại \(x_0\)</strong>. Ký hiệu: \(y'\), \(\dfrac{dy}{dx}\).</p>
+    </div>
+
+    <div class="formula-section-title">🔹 Hàm hằng & lũy thừa</div>
+    <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Hàm số \(f(x)\)</th><th>Đạo hàm \(f'(x)\)</th><th>Ghi chú</th></tr></thead>
+      <tbody>
+        <tr><td>\(c\) (hằng số)</td><td>\(0\)</td><td></td></tr>
+        <tr><td>\(x\)</td><td>\(1\)</td><td></td></tr>
+        <tr><td>\(x^n\) (\(n \in \mathbb{Z}\))</td><td>\(nx^{n-1}\)</td><td>\(n \neq 0\)</td></tr>
+        <tr><td>\(x^\alpha\) (\(\alpha \in \mathbb{R}\))</td><td>\(\alpha x^{\alpha-1}\)</td><td>\(x > 0\)</td></tr>
+        <tr><td>\(\sqrt{x}\)</td><td>\(\dfrac{1}{2\sqrt{x}}\)</td><td>\(x > 0\)</td></tr>
+        <tr><td>\(\sqrt[n]{x}\)</td><td>\(\dfrac{1}{n\sqrt[n]{x^{n-1}}}\)</td><td>\(x > 0\)</td></tr>
+        <tr><td>\(\dfrac{1}{x}\)</td><td>\(-\dfrac{1}{x^2}\)</td><td>\(x \neq 0\)</td></tr>
+        <tr><td>\(\dfrac{1}{x^n}\)</td><td>\(-\dfrac{n}{x^{n+1}}\)</td><td>\(x \neq 0\)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="formula-section-title">🔸 Hàm mũ & logarit</div>
+    <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Hàm số \(f(x)\)</th><th>Đạo hàm \(f'(x)\)</th><th>Ghi chú</th></tr></thead>
+      <tbody>
+        <tr><td>\(e^x\)</td><td>\(e^x\)</td><td></td></tr>
+        <tr><td>\(a^x\) (\(a>0, a\neq1\))</td><td>\(a^x \ln a\)</td><td></td></tr>
+        <tr><td>\(e^{kx}\)</td><td>\(k e^{kx}\)</td><td>\(k\) hằng số</td></tr>
+        <tr><td>\(\ln x\)</td><td>\(\dfrac{1}{x}\)</td><td>\(x > 0\)</td></tr>
+        <tr><td>\(\ln |x|\)</td><td>\(\dfrac{1}{x}\)</td><td>\(x \neq 0\)</td></tr>
+        <tr><td>\(\log_a x\)</td><td>\(\dfrac{1}{x \ln a}\)</td><td>\(x>0\)</td></tr>
+        <tr><td>\(\log_{10} x\)</td><td>\(\dfrac{1}{x \ln 10}\)</td><td>\(x>0\)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="formula-section-title">🔹 Hàm lượng giác</div>
+    <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Hàm số \(f(x)\)</th><th>Đạo hàm \(f'(x)\)</th><th>Điều kiện</th></tr></thead>
+      <tbody>
+        <tr><td>\(\sin x\)</td><td>\(\cos x\)</td><td></td></tr>
+        <tr><td>\(\cos x\)</td><td>\(-\sin x\)</td><td></td></tr>
+        <tr><td>\(\tan x\)</td><td>\(\dfrac{1}{\cos^2 x}\)</td><td>\(x \neq \frac{\pi}{2}+k\pi\)</td></tr>
+        <tr><td>\(\cot x\)</td><td>\(-\dfrac{1}{\sin^2 x}\)</td><td>\(x \neq k\pi\)</td></tr>
+        <tr><td>\(\sin(kx)\)</td><td>\(k\cos(kx)\)</td><td></td></tr>
+        <tr><td>\(\cos(kx)\)</td><td>\(-k\sin(kx)\)</td><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="formula-section-title">🔸 Hàm lượng giác ngược</div>
+    <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Hàm số \(f(x)\)</th><th>Đạo hàm \(f'(x)\)</th><th>Điều kiện</th></tr></thead>
+      <tbody>
+        <tr><td>\(\arcsin x\)</td><td>\(\dfrac{1}{\sqrt{1-x^2}}\)</td><td>\(-1<x<1\)</td></tr>
+        <tr><td>\(\arccos x\)</td><td>\(-\dfrac{1}{\sqrt{1-x^2}}\)</td><td>\(-1<x<1\)</td></tr>
+        <tr><td>\(\arctan x\)</td><td>\(\dfrac{1}{1+x^2}\)</td><td></td></tr>
+        <tr><td>\(\text{arccot}\, x\)</td><td>\(-\dfrac{1}{1+x^2}\)</td><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- TAB 2: QUY TẮC TÍNH -->
+  <div class="tab-content" id="quyTac">
+    <h2>Quy tắc tính đạo hàm</h2>
+    <div class="formula-section-title">🔹 Bốn quy tắc cơ bản</div>
+    <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Quy tắc</th><th>Công thức</th></tr></thead>
+      <tbody>
+        <tr><td>Tổng / Hiệu</td><td>\((u \pm v)' = u' \pm v'\)</td></tr>
+        <tr><td>Nhân hằng số</td><td>\((cu)' = c u'\)</td></tr>
+        <tr><td>Tích</td><td>\((uv)' = u'v + uv'\)</td></tr>
+        <tr><td>Thương</td><td>\(\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2},\; v\neq 0\)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="formula-section-title">🔸 Quy tắc dây chuyền (Chain rule)</div>
+    <div class="formula-box">
+      $$[f(g(x))]' = f'(g(x)) \cdot g'(x)$$
+      <p style="margin-top:8px">\(\dfrac{dy}{dx} = \dfrac{dy}{du} \cdot \dfrac{du}{dx}\) với \(y = f(u), u = g(x)\)</p>
+    </div>
+
+    <div class="card">
+      <strong>Dạng thường gặp:</strong>
+      <ul>
+        <li>\([f(u)]^n \Rightarrow n[f(u)]^{n-1} \cdot u'\)</li>
+        <li>\(e^{u} \Rightarrow e^{u} \cdot u'\)</li>
+        <li>\(\ln u \Rightarrow \dfrac{u'}{u}\)</li>
+        <li>\(\sin u \Rightarrow \cos u \cdot u'\)</li>
+        <li>\(\cos u \Rightarrow -\sin u \cdot u'\)</li>
+        <li>\(\sqrt{u} \Rightarrow \dfrac{u'}{2\sqrt{u}}\)</li>
+      </ul>
+    </div>
+
+    <h3>📎 Ví dụ áp dụng</h3>
+    <div class="example"><strong>Ví dụ 1 (Tích):</strong> \(y = x^2 \sin x\)<br>\(y' = 2x \sin x + x^2 \cos x\)</div>
+    <div class="example"><strong>Ví dụ 2 (Thương):</strong> \(y = \dfrac{x^2-1}{x+1}\)<br>\(y' = \dfrac{2x(x+1)-(x^2-1)}{(x+1)^2}=1\)</div>
+    <div class="example"><strong>Ví dụ 3 (Chain rule):</strong> \(y = \sin(3x^2+1)\)<br>\(y' = \cos(3x^2+1)\cdot 6x = 6x\cos(3x^2+1)\)</div>
+
+    <h3>📝 Bài tập quy tắc</h3>
+    <div class="exercise"><p><strong>Bài 1:</strong> \(y = (3x^2-5x+1)(2x+7)\). Tính \(y'\).</p><button class="toggle-solution" data-target="sol-qt1">Xem lời giải</button><div id="sol-qt1" class="solution">\(u' = 6x-5,\; v'=2\) → \(y' = (6x-5)(2x+7)+(3x^2-5x+1)\cdot 2 = 18x^2+22x-33\)</div></div>
+    <div class="exercise"><p><strong>Bài 2:</strong> \(y = \dfrac{2x-3}{x^2+1}\). Tính \(y'\).</p><button class="toggle-solution" data-target="sol-qt2">Xem lời giải</button><div id="sol-qt2" class="solution">\(y' = \dfrac{2(x^2+1)-(2x-3)2x}{(x^2+1)^2} = \dfrac{-2x^2+6x+2}{(x^2+1)^2}\)</div></div>
+    <div class="exercise"><p><strong>Bài 3:</strong> \(y = e^{2x^2-3x}\). Tính \(y'\).</p><button class="toggle-solution" data-target="sol-qt3">Xem lời giải</button><div id="sol-qt3" class="solution">\(u=2x^2-3x, u'=4x-3 \Rightarrow y' = (4x-3)e^{2x^2-3x}\)</div></div>
+  </div>
+
+  <!-- TAB 3: TRƯỜNG HỢP ĐẶC BIỆT -->
+  <div class="tab-content" id="dacBiet">
+    <h2>Trường hợp đặc biệt & lưu ý quan trọng</h2>
+    <div class="formula-section-title">⭐ Bảng đạo hàm hàm hợp</div>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Dạng \(f(u(x))\)</th><th>Đạo hàm</th></tr></thead>
+        <tbody>
+          <tr><td>\([u(x)]^n\)</td><td>\(n\,u^{n-1}\cdot u'\)</td></tr>
+          <tr><td>\(\sqrt{u}\)</td><td>\(\frac{u'}{2\sqrt{u}}\)</td></tr>
+          <tr><td>\(\frac{1}{u}\)</td><td>\(-\frac{u'}{u^2}\)</td></tr>
+          <tr><td>\(e^{u}\)</td><td>\(u' e^{u}\)</td></tr>
+          <tr><td>\(\ln u\)</td><td>\(\frac{u'}{u}\)</td></tr>
+          <tr><td>\(\sin u\)</td><td>\(u'\cos u\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="formula-section-title">🔺 Hàm trị tuyệt đối & phân đoạn</div>
+    <div class="card">\((|x|)' = \dfrac{x}{|x|}\;(x\neq0)\). Hàm phân đoạn: kiểm tra đạo hàm trái/phải tại điểm nối.</div>
+    <div class="formula-section-title">🔸 Đạo hàm hàm ẩn</div>
+    <div class="example"><strong>Ví dụ:</strong> \(x^2+y^2=25 \Rightarrow 2x+2yy'=0 \Rightarrow y' = -\dfrac{x}{y}\)</div>
+
+    <div class="formula-section-title">⚠️ Lỗi thường gặp</div>
+    <div class="note"><strong>❌ Sai:</strong> \((uv)' = u'v'\) &nbsp;✅ Đúng: \(u'v+uv'\)</div>
+    <div class="note"><strong>✅ Lưu ý:</strong> \((\tan x)' = \frac{1}{\cos^2 x}=1+\tan^2 x\)</div>
+
+    <h3>📝 Bài tập đặc biệt</h3>
+    <div class="exercise"><p><strong>Bài 1 (Tiếp tuyến):</strong> Viết PT tiếp tuyến \(y=x^3-2x+1\) tại \(x_0=1\).</p><button class="toggle-solution" data-target="sol-db1">Xem lời giải</button><div id="sol-db1" class="solution">\(y(1)=0,\; y'=3x^2-2 \Rightarrow y'(1)=1\) → tiếp tuyến \(y = x-1\)</div></div>
+    <div class="exercise"><p><strong>Bài 2 (Hàm phân đoạn):</strong> \(f(x)=\begin{cases}x^2, x\ge0\\ -x, x<0\end{cases}\). Tính \(f'(0)\) nếu có.</p><button class="toggle-solution" data-target="sol-db2">Xem lời giải</button><div id="sol-db2" class="solution">\(f'_+(0)=0,\; f'_-(0)=-1 \Rightarrow\) không có đạo hàm tại 0.</div></div>
+  </div>
+
+  <!-- TAB 4: ỨNG DỤNG ĐẠO HÀM -->
+  <div class="tab-content" id="ungDung">
+    <h2>Ứng dụng đạo hàm</h2>
+    <div class="formula-section-title">📈 Tính đơn điệu & cực trị</div>
+    <div class="card">
+      <ul><li>\(f'(x)>0\) ⇒ đồng biến, \(f'(x)<0\) ⇒ nghịch biến.</li>
+      <li>\(f'(x_0)=0\) và đổi dấu ⇒ cực trị. \(f''(x_0)>0\) ⇒ cực tiểu, \(f''(x_0)<0\) ⇒ cực đại.</li></ul>
+    </div>
+    <div class="formula-section-title">🏆 GTLN – GTNN trên đoạn</div>
+    <div class="card">Tìm nghiệm \(f'(x)=0\), tính giá trị tại nghiệm và hai đầu mút, so sánh.</div>
+    <div class="formula-section-title">📐 Lồi lõm – Điểm uốn</div>
+    <div class="card">\(f''(x)>0\): lõm, \(f''(x)<0\): lồi, \(f''(x_0)=0\) và đổi dấu ⇒ điểm uốn.</div>
+
+    <h3>📝 Bài tập ứng dụng</h3>
+    <div class="exercise"><p><strong>Bài 1 (Cực trị):</strong> \(f(x)=x^3-3x^2-9x+5\). Tìm khoảng đơn điệu, cực trị.</p><button class="toggle-solution" data-target="sol-ud1">Lời giải</button><div id="sol-ud1" class="solution">\(f'(x)=3(x-3)(x+1)\). ĐB trên \((-\infty,-1)\cup(3,\infty)\), NB trên \((-1,3)\). CĐ \(f(-1)=10\), CT \(f(3)=-22\).</div></div>
+    <div class="exercise"><p><strong>Bài 2 (GTLN/GTNN):</strong> \(f(x)=x^3-3x+2\) trên \([0,2]\).</p><button class="toggle-solution" data-target="sol-ud2">Lời giải</button><div id="sol-ud2" class="solution">\(f'(x)=3x^2-3=0\Rightarrow x=1\). \(f(0)=2, f(1)=0, f(2)=4\) → min=0, max=4.</div></div>
+    <div class="exercise"><p><strong>Bài 3 (Vật lý):</strong> \(s(t)=2t^3-9t^2+12t\). Tìm vận tốc, gia tốc tại \(t=2\), thời điểm đứng yên.</p><button class="toggle-solution" data-target="sol-ud3">Lời giải</button><div id="sol-ud3" class="solution">\(v(t)=6t^2-18t+12\), \(v(2)=0\), \(a(t)=12t-18\), \(a(2)=6\). Đứng yên khi \(t=1\) hoặc \(t=2\).</div></div>
+    <div class="exercise"><p><strong>Bài 4 (Tối ưu):</strong> Chi phí \(C(x)=x^3-6x^2+15x\) (triệu). Tìm \(x\) để chi phí trung bình \(\bar{C}(x)\) nhỏ nhất.</p><button class="toggle-solution" data-target="sol-ud4">Lời giải</button><div id="sol-ud4" class="solution">\(\bar{C}(x)=x^2-6x+15\), \(\bar{C}'(x)=2x-6=0\Rightarrow x=3\), \(\bar{C}(3)=6\) (triệu/sp) → tối ưu tại \(x=3\).</div></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  function switchTab(tabId) {
+    contents.forEach(c => c.classList.remove('active'));
+    tabs.forEach(b => b.classList.remove('active'));
+    const activeContent = document.getElementById(tabId);
+    if (activeContent) activeContent.classList.add('active');
+    const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const tabId = this.getAttribute('data-tab');
+      switchTab(tabId);
+      history.replaceState(null, null, '#' + tabId);
+    });
+  });
+
+  window.addEventListener('load', function() {
+    const hash = window.location.hash.substring(1);
+    if (hash && document.getElementById(hash)) switchTab(hash);
+    else switchTab('bangDaoHam');
+  });
+  window.addEventListener('hashchange', function() {
+    const hash = window.location.hash.substring(1);
+    if (hash && document.getElementById(hash)) switchTab(hash);
+  });
+
+  document.querySelectorAll('.toggle-solution').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      const sol = document.getElementById(targetId);
+      if (!sol) return;
+      const isHidden = sol.style.display === 'none' || sol.style.display === '';
+      if (isHidden) {
+        sol.style.display = 'block';
+        this.textContent = 'Ẩn lời giải';
+        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([sol]).catch(e=>console.log(e));
+      } else {
+        sol.style.display = 'none';
+        this.textContent = 'Xem lời giải';
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
